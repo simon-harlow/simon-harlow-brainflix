@@ -1,0 +1,41 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../App.scss' as *;
+
+.header-container {
+    background-color: $white;
+}
+
+.header {
+    background-color: inherit;
+    width: 100vw;
+    text-align: center;
+
+
+    &__logo {
+        padding: 1rem 0 1rem 0;
+    }
+
+    &__search {
+        display: inline-block;
+    }
+
+    &__avatar {
+        display: inline-block;
+
+        &--img {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: $mercury;
+            margin-top: 1.5rem;
+        }
+    }
+
+    &__button--btn {
+        background-color: $brianflix-blue;
+        color: $white
+    }
+}

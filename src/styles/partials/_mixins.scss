@@ -1,0 +1,82 @@
+@use './variables' as *;
+@use './fonts' as *;
+
+// tablet responsive
+@mixin tablet {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+// desktop responsive
+@mixin desktop {
+    @media (min-width: 1280px) {
+        @content;
+    }
+}
+
+// font styles
+@mixin font-header {
+    font-size: 24px;
+    line-height: 32px;
+    font-family: 'Avenir Regular';
+    font-weight: 700;
+    color: $brainflix-black;
+
+    @include tablet {
+        font-size: 33px;
+        line-height: 44px;
+    }
+}
+
+@mixin font-section-header {
+    font-size: 12px;
+    line-height: 20px;
+    font-family: 'Avenir Regular';
+    font-weight: 700;
+    color: $brainflix-black;
+
+    @include tablet {
+        font-size: 12px;
+        line-height: 20px;
+    }
+}
+
+@mixin font-subheader {
+    font-size: 13px;
+    line-height: 18px;
+    font-family: 'Avenir Regular';
+    font-weight: 700;
+    color: $brainflix-black;
+
+    @include tablet {
+        font-size: 14px;
+        line-height: 22px;
+    }
+}
+
+@mixin font-body {
+    font-size: 13px;
+    line-height: 18px;
+    font-family: 'Avenir Regular';
+    font-weight: 400;
+    color: $bandsite-black;
+
+    @include tablet {
+        font-size: 14px;
+        line-height: 22px;
+    }
+}
+
+@mixin font-label {
+    font-size: 10px;
+    line-height: 20px;
+    font-family: 'Avenir Regular';
+    font-weight: 700;
+    color: $white;
+
+    @include tablet {
+        font-size: 12px;
+        line-height: 20px;
+    }
+}
