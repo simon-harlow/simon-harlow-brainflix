@@ -1,0 +1,36 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../App.scss' as *;
+
+.next-videos {
+    background-color: $white;
+    padding: 1.5rem 1rem 1.5rem 1rem;
+    display: flex;
+    flex-direction: row;
+    // justify-content: center;
+
+    &__left-container {
+        width: 40%;
+    }
+
+    &__image {
+        height: 50px;
+        width: 50px;
+    }
+
+    &__right-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__title {
+        @include font-subheader;
+    }
+
+    &__channel {
+        @include font-section-header;
+    }
+}
+

@@ -13,14 +13,14 @@ export default function Header() {
                     </div>
                     <div className="header__search">
                         <form>
-                            <input type="text" value="Search"/>
+                            <input className="header__search--input" type="text" defaultValue="Search"/>
                         </form>
                     </div>
                     <div className="header__avatar">
                         <img className="header__avatar--img"src={Avatar} alt="user avatar"/>
                     </div>
                     <div className="header__button">
-                        <button className="header__button--btn">Upload</button>
+                        <button className="header__button--btn">UPLOAD</button>
                     </div>
                 </div>
             </header>
