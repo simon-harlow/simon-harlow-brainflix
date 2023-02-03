@@ -3,14 +3,80 @@
 @use '../../styles/partials/fonts' as *;
 @use '../../App.scss' as *;
 
-.main-video__conatiner {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0 1rem 0 1rem;
+.main-video {
+    background-color: $white;
+
+    &__video {
+        background-color: $brainflix-darkblack;
+        width: 100%
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1.5rem 1rem 0rem 1rem; 
+    }
+
+    &__title-container {
+        border-bottom: 2px solid $mercury;
+    }
+
+    &__title {
+        @include font-header;
+        margin: 0 0 0 0;
+        padding-bottom: 1.5rem;
+    }
+
+    &__info {
+        @include font-body;
+        color: $silver;
+        display: flex;
+        flex-direction: row;
+        border-bottom: 2px solid $mercury;
+        padding: 1.5rem 0rem 1.5rem 0rem; 
+
+        &-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            width: 50%
+        }
+        // TODO: need to align left and right sections
+        &-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            width: 50%
+        }
+
+        &-channel {
+            @include font-subheader;
+            padding-bottom: 1rem;
+        }
+
+        &-views, &-likes {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+
+        &-icon {
+            padding: 0 0.5rem 1rem 0;
+        }
+
+        &-count {
+            padding-bottom: 1rem;
+        }
+    }
+
+    &__description {
+        @include font-body;
+        font-weight: 700;
+        padding-top: 1rem;
+    }
+
 }
 
-.main-video__video {
-    background-color: $brainflix-darkblack;
-}

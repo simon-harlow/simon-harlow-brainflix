@@ -9,7 +9,7 @@ export default function NextVideos() {
 	return (
 		<>
 			<div>
-				<h4>Next Videos</h4>
+				<h4>NEXT VIDEOS</h4>
 			</div>
 			<div>
             {nextVideoList.map((video) => (

@@ -1,6 +1,8 @@
 import React from 'react'
 import './MainVideo.scss'
 import VideoDetails from "../../data/video-details.json";
+import ViewsIcon from "../../assets/images/views.svg"
+import LikesIcon from "../../assets/images/likes.svg"
 
 const videoDetails = VideoDetails;
 
@@ -14,28 +16,32 @@ export default function MainVideo() {
   return (
         <>
             <main>
-                <section className="main-video__container">
+                <section className="main-video">
                     <video className="main-video__video" src="" width="100%" height="240" poster={mainVideo.image} controls/>
-                    <div className="main-video__details">
                         <div className="main-video__details">
-                            <div className="main-video__details-title">
-                                <h1 className="main-video__details-title--XYZ">{mainVideo.title}</h1>
+                            <div className="main-video__title-container">
+                                <h1 className="main-video__title">{mainVideo.title}</h1>
                             </div>
-                            <div className="main-video__details-data">
-                                <div className="main-video__details-data--left">
-                                    <h4 className="main-video__details-channel">{mainVideo.channel}</h4>
-                                    <p className="main-video__details-date">{mainVideo.timestamp}</p>
+                            <div className="main-video__info">
+                                <div className="main-video__info-left">
+                                    <h4 className="main-video__info-channel">By {mainVideo.channel}</h4>
+                                    <p className="main-video__info-date">{mainVideo.timestamp}</p>
                                 </div>
-                                <div className="main-video__details-data--right">
-                                    <p className="main-video__details-stats">{mainVideo.views}</p>
-                                    <p className="main-video__details-stats">{mainVideo.likes}</p>
+                                <div className="main-video__info-right">
+                                    <div className="main-video__info-views">
+                                        <img className="main-video__info-icon" src={ViewsIcon} alt="views icon" />
+                                        <p className="main-video__info-count">{mainVideo.views}</p>
+                                    </div>
+                                    <div className="main-video__info-likes">
+                                    <img className="main-video__info-icon" src={LikesIcon} alt="Likes icon" />
+                                        <p className="main-video__info-count">{mainVideo.likes}</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="main-video__details-description">
-                                <p className="main-video__details-description--XYZ">{mainVideo.description}</p>
+                            <div className="main-video__description">
+                                <p className="main-video__description-text">{mainVideo.description}</p>
                             </div>
                         </div>
-                    </div>
                 </section>
             </main>
         </>
