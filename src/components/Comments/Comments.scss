@@ -99,12 +99,12 @@
 
         &:active, &:focus {
             outline: none;
-            border: 1px solid $brainflix-black;
+            border: 1px solid $brainflix-blue;
         }
     }
 
     &__form-button {
-        @include font-subheader;
+        @include font-section-header;
         color: $white;
         background-color: $brainflix-blue;
         width: 100%;
@@ -112,6 +112,8 @@
         border: none;
         border-radius: .25rem;
         resize: none;
+        display: flex;
+        align-items: center;
 
         @include tablet {
             @include font-body;
@@ -119,13 +121,20 @@
             font-weight: 700;
             width: 10rem;
             padding: 0 2rem 0 2rem;
-            position: absolute;
             right: 0;
             bottom: 0;
         }
 
         &:hover {
-            background-color: $brainflix-darkblack;
+            background-color: $brainflix-darkblue;
+        }
+
+        &-img {
+            margin-right: auto;
+        }
+    
+        &-text {
+            margin-right: auto;
         }
     }
 }
@@ -135,7 +144,7 @@
     flex-direction: row;
     gap: 1rem;
     border-bottom: 2px solid $mercury;
-    padding: 1rem 0 1rem 0;
+    padding: 1.5rem 1rem 1.5rem 1rem;
 
     @include desktop {
         width: 50%;

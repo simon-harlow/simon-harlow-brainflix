@@ -12,6 +12,32 @@ const [getPosterVideo] = videoDetails.filter(
 
 const mainVideo = getPosterVideo;
 
+// TODO: below function is a repeat from comments component
+function timeAgoDate(date) {
+    const commentTime = new Date(date);
+    const nowTime = new Date();
+
+    const timeDifference = (nowTime - commentTime);
+    let timeAgo = "";
+
+    if (timeDifference < 5000) {
+        timeAgo = "just now";
+    } else if (timeDifference < 60000){
+        timeAgo = `${Math.round(timeDifference / 1000)} seconds ago`;
+    } else if (timeDifference < 120000){
+        timeAgo = `a minute ago`;
+    } else if (timeDifference < 3600000) {
+        timeAgo = `${Math.round(timeDifference / 60000)} minutes ago`;
+    } else if (timeDifference < 7200000) {
+        timeAgo = `an hour ago`;
+    } else if (timeDifference < 86400000) {
+        timeAgo = `${Math.round(timeDifference / 3600000)} hours ago`;
+    } else {
+        timeAgo = commentTime.toLocaleDateString();
+    }
+    return timeAgo;
+}
+
 export default function MainVideo() {
   return (
         <>
@@ -25,8 +51,9 @@ export default function MainVideo() {
                             <div className="main-video__info">
                                 <div className="main-video__info-left">
                                     <h4 className="main-video__info-channel">By {mainVideo.channel}</h4>
-                                    <p className="main-video__info-date">{mainVideo.timestamp}</p>
+                                    <p className="main-video__info-date">{timeAgoDate(mainVideo.timestamp)}</p>
                                 </div>
+                                {/* TODO: need to align left and right sections */}
                                 <div className="main-video__info-right">
                                     <div className="main-video__info-views">
                                         <img className="main-video__info-icon" src={ViewsIcon} alt="views icon" />
