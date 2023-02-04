@@ -10,6 +10,7 @@ console.log(videoDetails);
 const [getCommentsVideo] = videoDetails.filter(
 	(video) => video.id === "84e96018-4022-434e-80bf-000ce4cd12b8"
 );
+
 const firstVideoComments = getCommentsVideo.comments;
 console.log(firstVideoComments);
 
@@ -50,7 +51,7 @@ export default function CommentsInput() {
 						<img className="comments__profile-pic" id="profile-pic" src={Avatar} alt="user avatar"/>
 						<form className="comments__form" id="comments-form">
 							<label className="comments__form-subhead" htmlFor="comment">JOIN THE CONVERSATION</label>
-							<textarea className="comments__form-input comments__form-input" name="comment" id="comment" maxLength="200" placeholder="Add a new comment"></textarea>
+							<textarea className="comments__form-input" name="comment" id="comment" maxLength="200" placeholder="Add a new comment"></textarea>
 							<button className="comments__form-button" type="submit" id="submit">
 								<img className="comments__form-button-img" src={CommentIcon} alt="comment icon" />
 								<span className="comments__form-button-text">Comment</span>

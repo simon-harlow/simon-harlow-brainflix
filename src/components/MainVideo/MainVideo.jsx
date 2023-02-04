@@ -53,14 +53,13 @@ export default function MainVideo() {
                                     <h4 className="main-video__info-channel">By {mainVideo.channel}</h4>
                                     <p className="main-video__info-date">{timeAgoDate(mainVideo.timestamp)}</p>
                                 </div>
-                                {/* TODO: need to align left and right sections */}
                                 <div className="main-video__info-right">
                                     <div className="main-video__info-views">
-                                        <img className="main-video__info-icon" src={ViewsIcon} alt="views icon" />
+                                        <img className="main-video__info-icon--views" src={ViewsIcon} alt="views icon" />
                                         <p className="main-video__info-count">{mainVideo.views}</p>
                                     </div>
                                     <div className="main-video__info-likes">
-                                    <img className="main-video__info-icon" src={LikesIcon} alt="Likes icon" />
+                                    <img className="main-video__info-icon" src={LikesIcon} alt="likes icon" />
                                         <p className="main-video__info-count">{mainVideo.likes}</p>
                                     </div>
                                 </div>
