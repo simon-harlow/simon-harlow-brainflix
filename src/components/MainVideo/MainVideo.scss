@@ -4,83 +4,26 @@
 @use '../../App.scss' as *;
 
 .main-video {
-    background-color: $white;
+    background-color: $brainflix-darkblack;
+
+    &__video-container {
+        background-color: inherit;
+
+        @include tablet {
+            padding: 0rem 2.25rem 0rem 2.25rem;
+        }
+
+        @include desktop {
+            width: 80rem;
+            margin: 0 auto 0 auto;
+        }
+    }
 
     &__video {
-        background-color: $brainflix-darkblack;
-        width: 100%
+        background-color: inherit;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
-
-    &__details {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 1.5rem 1rem 0rem 1rem; 
-    }
-
-    &__title-container {
-        border-bottom: 2px solid $mercury;
-    }
-
-    &__title {
-        @include font-header;
-        margin: 0 0 0 0;
-        padding-bottom: 1.5rem;
-    }
-
-    &__info {
-        @include font-body;
-        color: $silver;
-        display: flex;
-        flex-direction: row;
-        border-bottom: 2px solid $mercury;
-        padding: 1.5rem 0rem 1.5rem 0rem; 
-
-        &-left {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            width: 50%
-        }
-
-        &-right {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            width: 50%
-        }
-
-        &-channel {
-            @include font-subheader;
-            padding-bottom: 1rem;
-        }
-
-        &-views, &-likes {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-        }
-
-        &-icon {
-            padding: 0 0.5rem 0rem 0;
-
-            &--views {
-                padding: 0 0.5rem 1rem 0;
-            }
-        }
-
-        &-count {
-            padding-bottom: 0rem;
-        }
-    }
-
-    &__description {
-        @include font-body;
-        font-weight: 700;
-        padding-top: 1rem;
-    }
-
 }
 

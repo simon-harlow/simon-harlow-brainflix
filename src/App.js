@@ -1,16 +1,14 @@
 import './App.scss';
 import Header from './components/Header/Header'
 import MainVideo from './components/MainVideo/MainVideo'
-import Comments from './components/Comments/Comments'
-import NextVideos from './components/NextVideos/NextVideos'
+import BelowVideoContent from './components/BelowVideoContent/BelowVideoContent'
 
 function App() {
   return (
     <div className="App">
       <Header />
       <MainVideo />
-      <Comments />
-      <NextVideos />
+      <BelowVideoContent />
     </div>
   );
 }

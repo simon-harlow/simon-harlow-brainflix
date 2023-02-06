@@ -36,7 +36,7 @@ function timeAgoDate(date) {
     } else if (timeDifference < 86400000) {
         timeAgo = `${Math.round(timeDifference / 3600000)} hours ago`;
     } else {
-        timeAgo = commentTime.toLocaleDateString();
+        timeAgo = commentTime.toLocaleDateString('en-US', {day: '2-digit', month: '2-digit', year: 'numeric'});
     }
     return timeAgo;
 }
@@ -44,21 +44,19 @@ function timeAgoDate(date) {
 export default function CommentsInput() {
 	return (
 		<>
-			<section className="comments-container">
+			<section className="comments">
 				<h2 className="comments__title">{numOfComments} Comments</h2>
-				<div className="comments">
 					<div className="comments__form-container">
 						<img className="comments__profile-pic" id="profile-pic" src={Avatar} alt="user avatar"/>
-						<form className="comments__form" id="comments-form">
-							<label className="comments__form-subhead" htmlFor="comment">JOIN THE CONVERSATION</label>
-							<textarea className="comments__form-input" name="comment" id="comment" maxLength="200" placeholder="Add a new comment"></textarea>
-							<button className="comments__form-button" type="submit" id="submit">
-								<img className="comments__form-button-img" src={CommentIcon} alt="comment icon" />
-								<span className="comments__form-button-text">Comment</span>
-							</button>
-						</form>
+                            <form className="comments__form" id="comments-form">
+                                <label className="comments__form-subhead" htmlFor="comment">JOIN THE CONVERSATION</label>
+                                <textarea className="comments__form-input" name="comment" id="comment" maxLength="200" placeholder="Add a new comment"></textarea>
+                                <button className="comments__form-button" type="submit" id="submit">
+                                    <img className="comments__form-button-img" src={CommentIcon} alt="comment icon" />
+                                    <span className="comments__form-button-text">Comment</span>
+                                </button>
+                            </form>
 					</div>
-				</div>
 				{firstVideoComments.map((video) => (
                 <div className="old-comments" id={video.id} key={video.id}>
                     <div className="old-comments__left-container">
