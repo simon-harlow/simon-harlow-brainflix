@@ -1,13 +1,13 @@
 import './App.scss';
 import Header from './components/Header/Header'
-import MainVideo from './components/MainVideo/MainVideo'
+import Main from './components/Main/Main'
 import BelowVideoContent from './components/BelowVideoContent/BelowVideoContent'
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <MainVideo />
+      <Main />
       <BelowVideoContent />
     </div>
   );

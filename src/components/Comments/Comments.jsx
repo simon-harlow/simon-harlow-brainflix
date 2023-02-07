@@ -3,6 +3,7 @@ import "./Comments.scss";
 import Avatar from "../../assets/images/Mohan-muruge.jpg";
 import VideoDetails from "../../data/video-details.json";
 import CommentIcon from '../../assets/images/add_comment.svg'
+import timeAgoDate from "../Utils/timeAgoDate";
 
 const videoDetails = VideoDetails;
 console.log(videoDetails);
@@ -16,30 +17,30 @@ console.log(firstVideoComments);
 
 const numOfComments = firstVideoComments.length
 
-function timeAgoDate(date) {
-    const commentTime = new Date(date);
-    const nowTime = new Date();
+// function timeAgoDate(date) {
+//     const commentTime = new Date(date);
+//     const nowTime = new Date();
 
-    const timeDifference = (nowTime - commentTime);
-    let timeAgo = "";
+//     const timeDifference = (nowTime - commentTime);
+//     let timeAgo = "";
 
-    if (timeDifference < 5000) {
-        timeAgo = "just now";
-    } else if (timeDifference < 60000){
-        timeAgo = `${Math.round(timeDifference / 1000)} seconds ago`;
-    } else if (timeDifference < 120000){
-        timeAgo = `a minute ago`;
-    } else if (timeDifference < 3600000) {
-        timeAgo = `${Math.round(timeDifference / 60000)} minutes ago`;
-    } else if (timeDifference < 7200000) {
-        timeAgo = `an hour ago`;
-    } else if (timeDifference < 86400000) {
-        timeAgo = `${Math.round(timeDifference / 3600000)} hours ago`;
-    } else {
-        timeAgo = commentTime.toLocaleDateString('en-US', {day: '2-digit', month: '2-digit', year: 'numeric'});
-    }
-    return timeAgo;
-}
+//     if (timeDifference < 5000) {
+//         timeAgo = "just now";
+//     } else if (timeDifference < 60000){
+//         timeAgo = `${Math.round(timeDifference / 1000)} seconds ago`;
+//     } else if (timeDifference < 120000){
+//         timeAgo = `a minute ago`;
+//     } else if (timeDifference < 3600000) {
+//         timeAgo = `${Math.round(timeDifference / 60000)} minutes ago`;
+//     } else if (timeDifference < 7200000) {
+//         timeAgo = `an hour ago`;
+//     } else if (timeDifference < 86400000) {
+//         timeAgo = `${Math.round(timeDifference / 3600000)} hours ago`;
+//     } else {
+//         timeAgo = commentTime.toLocaleDateString('en-US', {day: '2-digit', month: '2-digit', year: 'numeric'});
+//     }
+//     return timeAgo;
+// }
 
 export default function CommentsInput() {
 	return (

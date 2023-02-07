@@ -8,7 +8,7 @@ console.log(nextVideoList);
 export default function NextVideos() {
 	return (
 		<>
-            <section className="next-videos__container">
+            <section className="next-videos">
                 <div className="next-videos__title">
                     <h4 className="next-videos__title-text">NEXT VIDEOS</h4>
                 </div>

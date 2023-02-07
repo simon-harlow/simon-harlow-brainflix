@@ -5,10 +5,17 @@
 
 .below-video-content {
     @include desktop {
-        display: flex;
-        flex-direction: row;
-        width: 80rem;
-        margin: 0 auto 0 auto;
+        padding: 0rem 2.25rem 0rem 2.25rem;
+    }
+
+
+    &__container {
+        @include desktop {
+            display: flex;
+            flex-direction: row;
+            width: 80rem;
+            margin: 0 auto 0 auto;
+        }
     }
 
     &__left {

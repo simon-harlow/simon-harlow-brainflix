@@ -7,15 +7,17 @@ import MainVideoDetails from '../MainVideoDetails/MainVideoDetails'
 export default function BelowVideoContent() {
     return (
         <>
-            <section className='below-video-content'>
-                <div className='below-video-content__left'>
-                    <MainVideoDetails />
-                    <Comments />
+            <section  className='below-video-content'>
+                <div className='below-video-content__container'>
+                    <div className='below-video-content__left'>
+                        <MainVideoDetails />
+                        <Comments />
+                    </div>
+                    <div className='below-video-content__right'>
+                        <NextVideos />
+                    </div>
                 </div>
-                <div className='below-video-content__right'>
-                    <NextVideos />
-                </div>
-            </section>
+                </section>
         </>
     )
 }
