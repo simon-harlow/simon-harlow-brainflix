@@ -6,7 +6,6 @@ import timeAgoDate from '../Utils/timeAgoDate'
 
 
 export default function MainVideoDetails( {currentVideoDetails} ) {
-    console.log(`main vid deets array` , `${currentVideoDetails}`)
     return (
         <>
             <section className="video-details">

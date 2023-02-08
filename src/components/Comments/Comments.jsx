@@ -1,31 +1,18 @@
 import React from "react";
 import "./Comments.scss";
 import Avatar from "../../assets/images/Mohan-muruge.jpg";
-import VideoDetails from "../../data/video-details.json";
 import CommentIcon from '../../assets/images/add_comment.svg'
 import timeAgoDate from "../Utils/timeAgoDate";
 
-const videoDetails = VideoDetails;
-// console.log(videoDetails);
-
-const [getCommentsVideo] = videoDetails.filter(
-	(video) => video.id === "84e96018-4022-434e-80bf-000ce4cd12b8"
-);
-
-const firstVideoComments = getCommentsVideo.comments;
-// console.log(firstVideoComments);
-
-const numOfComments = firstVideoComments.length
-
-
 export default function CommentsInput( {currentVideoDetails} ) {
 
-    console.log(`comments array ,${currentVideoDetails}`)
+    console.log(currentVideoDetails)
+    const numberOfComments = currentVideoDetails.comments.length;
 
 	return (
 		<>
 			<section className="comments">
-				<h2 className="comments__title">{numOfComments} Comments</h2>
+				<h2 className="comments__title">{numberOfComments} Comments</h2>
 					<div className="comments__form-container">
 						<img className="comments__profile-pic" id="profile-pic" src={Avatar} alt="user avatar"/>
                             <form className="comments__form" id="comments-form">
@@ -37,7 +24,7 @@ export default function CommentsInput( {currentVideoDetails} ) {
                                 </button>
                             </form>
 					</div>
-				{firstVideoComments.map((video) => (
+				{currentVideoDetails.comments.map((video) => (
                 <div className="old-comments" id={video.id} key={video.id}>
                     <div className="old-comments__left-container">
                         <img className="old-comments__profile-pic" src="" alt="" />

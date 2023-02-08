@@ -1,11 +1,16 @@
 import React from "react";
 import "./NextVideos.scss";
 import NextVideosList from "../../data/videos.json";
+import Video from "../Video/Video";
 
-const nextVideoList = NextVideosList;
-console.log(nextVideoList);
+export default function NextVideos( {currentVideoId, changeMainVideo} ) {
 
-export default function NextVideos() {
+    const nextVideoList = NextVideosList;
+    console.log(nextVideoList);
+    const nextVideoListFiltered =  nextVideoList.filter((video) => {
+        return video.id !== currentVideoId;
+    })
+
 	return (
 		<>
             <section className="next-videos">
@@ -13,16 +18,15 @@ export default function NextVideos() {
                     <h4 className="next-videos__title-text">NEXT VIDEOS</h4>
                 </div>
                 <div>
-                {nextVideoList.map((video) => (
-                    <div className="next-videos-list" id={video.id} key={video.id}>
-                        <div className="next-videos-list__left-container">
-                            <img className="next-videos-list__image" src={video.image} alt={video.title}/>
-                        </div>
-                        <div className="next-videos-list__right-container">
-                            <h4 className="next-videos-list__title">{video.title}</h4>
-                            <p className="next-videos-list__channel">{video.channel}</p>
-                        </div>
-                    </div>
+                {nextVideoListFiltered.map((video) => (
+                    <Video
+                        changeMainVideo={changeMainVideo}
+                        key={video.id}
+                        id={video.id}
+                        image={video.image}
+                        title={video.title}
+                        channel={video.channel}
+                    />
                     ))}
                 </div>
             </section>
