@@ -5,9 +5,6 @@ import VideoDetails from "../../data/video-details.json";
 import NextVideosList from "../../data/videos.json";
 
 import MainVideo from '../MainVideo/MainVideo';
-import MainVideoDetails from '../MainVideoDetails/MainVideoDetails';
-import Comments from '../Comments/Comments';
-import NextVideos from '../NextVideos/NextVideos';
 import BelowVideoContent from '../BelowVideoContent/BelowVideoContent';
 
 export default function Main() {
@@ -30,7 +27,7 @@ function changeVideo(id) {
     return (
         <>
             <MainVideo currentVideo={currentVideo} />
-            <MainVideoDetails currentVideoDetails={currentVideo} />
+            <BelowVideoContent currentVideoDetails={currentVideo}/>
         </>
     )
 }

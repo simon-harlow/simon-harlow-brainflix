@@ -6,12 +6,7 @@ import timeAgoDate from '../Utils/timeAgoDate'
 
 
 export default function MainVideoDetails( {currentVideoDetails} ) {
-    console.log(` this is main video details`, currentVideoDetails);
-
-    // had to add this code in as the return was getting undefined- looked like a timing issue
-    if (!currentVideoDetails) {
-        return null;
-    }
+    console.log(`main vid deets array` , `${currentVideoDetails}`)
     return (
         <>
             <section className="video-details">
