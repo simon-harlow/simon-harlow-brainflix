@@ -8,7 +8,7 @@
     padding: 1.5rem 1rem 1.5rem 1rem; 
 
     @include tablet {
-        padding: 1rem 0rem 1.5rem 2.25rem;
+        padding: 1rem 2.25rem 1.5rem 2.25rem;
     }
 
     @include desktop {
@@ -36,8 +36,12 @@
         align-items: flex-start;
         gap: 1rem;
         border-bottom: 2px solid $mercury;
-        padding: 0 0 1rem 1rem;
+        padding: 0 0 1rem 0rem;
         width: 100%;
+
+        @include desktop {
+            padding: 0 0 1rem 1rem;
+        }
     }
 
     &__profile-pic {
@@ -165,7 +169,7 @@
 
     @include desktop {
         width: 100%;
-        padding: 1rem 1.5rem 1rem 1rem;
+        padding: 1.5rem 1.5rem 1.5rem 1rem;
     }
 
     &__profile-pic {
@@ -178,6 +182,7 @@
         @include tablet {
             width: 3rem;
             height: 3rem;
+            margin-right: 1rem;
         }
     }
 
