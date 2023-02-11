@@ -6,13 +6,12 @@ import timeAgoDate from "../Utils/timeAgoDate";
 
 export default function CommentsInput( {currentVideoDetails} ) {
 
-    console.log(currentVideoDetails)
     const numberOfComments = currentVideoDetails.comments.length;
 
 	return (
 		<>
 			<section className="comments">
-				<h2 className="comments__title">{numberOfComments} Comments</h2>
+				<h2 className="comments__count">{numberOfComments} Comments</h2>
 					<div className="comments__form-container">
 						<img className="comments__profile-pic" id="profile-pic" src={Avatar} alt="user avatar"/>
                             <form className="comments__form" id="comments-form">
@@ -20,14 +19,14 @@ export default function CommentsInput( {currentVideoDetails} ) {
                                 <textarea className="comments__form-input" name="comment" id="comment" maxLength="200" placeholder="Add a new comment"></textarea>
                                 <button className="comments__form-button" type="submit" id="submit">
                                     <img className="comments__form-button-img" src={CommentIcon} alt="comment icon" />
-                                    <span className="comments__form-button-text">Comment</span>
+                                    <span className="comments__form-button-text">COMMENT</span>
                                 </button>
                             </form>
 					</div>
 				{currentVideoDetails.comments.map((video) => (
                 <div className="old-comments" id={video.id} key={video.id}>
                     <div className="old-comments__left-container">
-                        <img className="old-comments__profile-pic" src="" alt="" />
+                        <img className="old-comments__profile-pic" alt="" />
                     </div>
                     <div className="old-comments__right-container">
                         <div className="old-comments__title-container">

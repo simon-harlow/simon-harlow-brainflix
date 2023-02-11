@@ -16,10 +16,6 @@
     &__left-container {
         width: 100px;
         margin-right: 1rem;
-
-        // @include tablet {
-        //     width: 20%;
-        // }
     }
 
     &__image {
@@ -44,6 +40,6 @@
 
     &__channel {
         @include font-body;
-        font-weight: 700;
+        // font-weight: 700;
     }
 }

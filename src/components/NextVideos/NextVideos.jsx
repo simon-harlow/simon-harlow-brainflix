@@ -6,7 +6,6 @@ import Video from "../Video/Video";
 export default function NextVideos( {currentVideoId, changeMainVideo} ) {
 
     const nextVideoList = NextVideosList;
-    console.log(nextVideoList);
     const nextVideoListFiltered =  nextVideoList.filter((video) => {
         return video.id !== currentVideoId;
     })

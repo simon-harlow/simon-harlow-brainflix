@@ -20,7 +20,6 @@ export default function Header() {
                             <input className="header__search-input" type="text" placeholder="Search"/>
                         </div>
                     </form>
-                    {/* TODO: align and position avatar correctly next to search bar for all screen sizes  */}
                     <div className="header__avatar">
                         <img className="header__avatar-img"src={Avatar} alt="user avatar"/>
                     </div>
