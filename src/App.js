@@ -1,13 +1,22 @@
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+
 import './App.scss';
 import Header from './components/Header/Header'
-import Main from './components/Main/Main'
+import Home from "./pages/Home/Home"
+import Upload from "./pages/Upload/Upload"
+import NotFound from './pages/NotFound/NotFound';
+
 
 function App() {
   return (
-    <div className="App">
+    <BrowserRouter>
       <Header />
-      <Main />
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="upload" element={<Upload />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
