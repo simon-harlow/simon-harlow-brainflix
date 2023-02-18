@@ -16,4 +16,8 @@
   margin: 0 0 0 0;
   padding: 0 0 0 0;
   box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
 }/*# sourceMappingURL=App.css.map */
