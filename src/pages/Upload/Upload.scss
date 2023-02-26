@@ -102,6 +102,11 @@
 		margin-bottom: 1rem;
 		background-color: $alabaster;
 
+		&:active, &:focus {
+            outline: none;
+            border: 1px solid $brainflix-blue;
+        }
+
 		&--textarea {
 			resize: none;
 			height: 6rem;

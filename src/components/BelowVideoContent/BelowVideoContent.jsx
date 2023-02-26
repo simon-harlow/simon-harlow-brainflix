@@ -18,7 +18,6 @@ export default function BelowVideoContent({ currentVideoId, changeMainVideo, vid
 			.get(`${apiURL}/videos/${currentVideoId}?api_key=${getApiKey}`)
 			.then((response) => {
 				setCurrentVideoData(response.data);
-                console.log(response.data);
 			})
 			.catch((error) => console.log(error));
 	}, [currentVideoId]);

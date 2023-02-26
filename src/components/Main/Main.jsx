@@ -17,14 +17,12 @@ export default function Main() {
 			.then((response) => {
 				setVideoData(response.data);
 				setCurrentVideo(response.data[0]);
-                console.log(response.data[0]);
 			})
 			.catch((error) => console.log(error));
 	}, []);
 
 	function changeVideo(id) {
 		const selectedVideo = videoData.find((video) => {
-			console.log(`this video ${id} has been selected`);
 			return video.id === id;
 		});
 
