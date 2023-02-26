@@ -1,34 +1,48 @@
-import React from 'react'
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-import VideoDetails from "../../data/video-details.json";
-import MainVideo from '../MainVideo/MainVideo';
-import BelowVideoContent from '../BelowVideoContent/BelowVideoContent';
+import getApiKey from "../Utils/const";
+import MainVideo from "../MainVideo/MainVideo";
+import BelowVideoContent from "../BelowVideoContent/BelowVideoContent";
+
+const apiURL = "https://project-2-api.herokuapp.com";
 
 export default function Main() {
+	const [videoData, setVideoData] = useState([]);
+	const [currentVideo, setCurrentVideo] = useState(null);
 
-const videoDetails = VideoDetails;
+	useEffect(() => {
+		axios
+			.get(`${apiURL}/videos?api_key=${getApiKey}`)
+			.then((response) => {
+				setVideoData(response.data);
+				setCurrentVideo(response.data[0]);
+                console.log(response.data[0]);
+			})
+			.catch((error) => console.log(error));
+	}, []);
 
-const [videoData, setVideoData] = useState(videoDetails);
-const [currentVideo, setCurrentVideo] = useState(videoDetails[0]);
+	function changeVideo(id) {
+		const selectedVideo = videoData.find((video) => {
+			console.log(`this video ${id} has been selected`);
+			return video.id === id;
+		});
 
-function changeVideo(id) {
-    const selectedVideo = videoDetails.find((video) => {
-        console.log(`this video ${id} has been selected`);
-        return video.id === id;
-    })
+		setCurrentVideo(selectedVideo);
+	}
 
-    setCurrentVideo(selectedVideo);
-}
-
-    return (
-        <>
-            <MainVideo currentVideo={currentVideo} />
-            <BelowVideoContent
-                currentVideoId={currentVideo.id}
-                currentVideoDetails={currentVideo}
-                changeMainVideo={changeVideo}
-            />
-        </>
-    )
+	return (
+		<>
+			{currentVideo && (
+				<>
+					<MainVideo currentVideo={currentVideo} />
+					<BelowVideoContent
+						currentVideoId={currentVideo.id}
+						changeMainVideo={changeVideo}
+						videoData={videoData}
+					/>
+				</>
+			)}
+		</>
+	);
 }

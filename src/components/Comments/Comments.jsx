@@ -1,12 +1,13 @@
 import React from "react";
+
 import "./Comments.scss";
 import Avatar from "../../assets/images/Mohan-muruge.jpg";
 import CommentIcon from '../../assets/images/add_comment.svg'
 import timeAgoDate from "../Utils/timeAgoDate";
 
-export default function CommentsInput( {currentVideoDetails} ) {
+export default function CommentsInput( {currentVideoData} ) {
 
-    const numberOfComments = currentVideoDetails.comments.length;
+    const numberOfComments = currentVideoData.comments.length;
 
 	return (
 		<>
@@ -23,7 +24,7 @@ export default function CommentsInput( {currentVideoDetails} ) {
                                 </button>
                             </form>
 					</div>
-				{currentVideoDetails.comments.map((video) => (
+				{currentVideoData.comments.map((video) => (
                 <div className="old-comments" id={video.id} key={video.id}>
                     <div className="old-comments__left-container">
                         <img className="old-comments__profile-pic" alt="" />

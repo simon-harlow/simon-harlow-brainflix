@@ -1,11 +1,12 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+
 import "./NextVideos.scss";
-import NextVideosList from "../../data/videos.json";
 import Video from "../Video/Video";
 
-export default function NextVideos( {currentVideoId, changeMainVideo} ) {
+export default function NextVideos( {videoData, currentVideoId, changeMainVideo} ) {
 
-    const nextVideoList = NextVideosList;
+    const nextVideoList = videoData;
     const nextVideoListFiltered =  nextVideoList.filter((video) => {
         return video.id !== currentVideoId;
     })
@@ -18,14 +19,16 @@ export default function NextVideos( {currentVideoId, changeMainVideo} ) {
                 </div>
                 <div>
                 {nextVideoListFiltered.map((video) => (
-                    <Video
-                        changeMainVideo={changeMainVideo}
-                        key={video.id}
-                        id={video.id}
-                        image={video.image}
-                        title={video.title}
-                        channel={video.channel}
-                    />
+                    <NavLink to={`/${video.id}`} key={video.id}>
+                        <Video
+                            changeMainVideo={changeMainVideo}
+                            key={video.id}
+                            id={video.id}
+                            image={video.image}
+                            title={video.title}
+                            channel={video.channel}
+                        />
+                    </NavLink>
                     ))}
                 </div>
             </section>
