@@ -2,20 +2,18 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import getApiKey from "../Utils/const";
+import { API_URL, API_KEY} from "../Utils/const";
 import "./BelowVideoContent.scss";
 import Comments from "../Comments/Comments";
 import NextVideos from "../NextVideos/NextVideos";
 import MainVideoDetails from "../MainVideoDetails/MainVideoDetails";
-
-const apiURL = "https://project-2-api.herokuapp.com";
 
 export default function BelowVideoContent({ currentVideoId, changeMainVideo, videoData }) {
 	const [currentVideoData, setCurrentVideoData] = useState(null);
 
 	useEffect(() => {
 		axios
-			.get(`${apiURL}/videos/${currentVideoId}?api_key=${getApiKey}`)
+			.get(`${API_URL}/videos/${currentVideoId}?api_key=${API_KEY}`)
 			.then((response) => {
 				setCurrentVideoData(response.data);
 			})

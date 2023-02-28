@@ -5,7 +5,6 @@ export default function Video( {changeMainVideo, id, title, channel, image} ) {
 
     const clickHandler = () => {
         changeMainVideo(id);
-        console.log("clickHandler has run");
     };
 
     return (

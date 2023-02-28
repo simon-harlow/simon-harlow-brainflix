@@ -1,16 +1,17 @@
 import axios from "axios"
 
-const getApiKey = () => {
+export const API_URL = "https://project-2-api.herokuapp.com"
+
+export const API_KEY = () => {
     axios
-    .get('https://project-2-api.herokuapp.com/register')
+    .get('apiURL')
     .then((result) => {
-        const apiKey = result.data.api_key;
-        console.log(apiKey);
-        return apiKey;
+        const apiKeyResult = result.data.api_key;
+        return apiKeyResult;
     })
     .catch((error) => {
         console.error(error);
     });
 };
 
-export default getApiKey;
+
