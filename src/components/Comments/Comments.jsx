@@ -11,7 +11,7 @@ export default function CommentsInput( {currentVideoData} ) {
 	return (
         <section className="comments">
             <h2 className="comments__count">{numberOfComments} Comments</h2>
-            <CommentsForm />
+            <CommentsForm currentVideoData={currentVideoData} />
             {currentVideoData.comments.map((video) => (
             <div className="old-comments" id={video.id} key={video.id}>
                 <div className="old-comments__left-container">

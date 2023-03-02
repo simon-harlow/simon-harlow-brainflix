@@ -78,6 +78,10 @@
         background-color: $alabaster;
         resize: none;
 
+        &--name {
+            height: 3rem;
+        }
+
         @include tablet {
             height: 3rem;
             max-width: 70%;
@@ -128,4 +132,9 @@
             margin-right: auto;
         }
     }
+}
+
+// provides red border to either comment input box when they fail validation
+.form__error {
+    border: 1px solid #D22D2D;
 }
