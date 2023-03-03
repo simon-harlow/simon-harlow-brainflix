@@ -1,7 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { useParams } from "react-router-dom";
 
+import { getVideoData } from "../Utils/getVideoData";
 import { API_URL, API_KEY} from "../Utils/const";
 import "./BelowVideoContent.scss";
 import Comments from "../Comments/Comments";
@@ -10,15 +11,16 @@ import MainVideoDetails from "../MainVideoDetails/MainVideoDetails";
 
 export default function BelowVideoContent({ currentVideoId, changeMainVideo, videoData }) {
 	const [currentVideoData, setCurrentVideoData] = useState(null);
+	const { videoId } = useParams();
 
 	useEffect(() => {
-		axios
-			.get(`${API_URL}/videos/${currentVideoId}?api_key=${API_KEY}`)
-			.then((response) => {
-				setCurrentVideoData(response.data);
+		const id = videoId || currentVideoId;
+		getVideoData(API_URL, API_KEY, id)
+			.then((data) => {
+				setCurrentVideoData(data);
 			})
 			.catch((error) => console.log(error));
-	}, [currentVideoId]);
+	}, [currentVideoId, videoId]);
 
 	if (!currentVideoData) {
 		return;
@@ -31,7 +33,9 @@ export default function BelowVideoContent({ currentVideoId, changeMainVideo, vid
 					<MainVideoDetails
 						currentVideoData={currentVideoData}
 					/>
-					<Comments currentVideoData={currentVideoData} />
+					<Comments
+					currentVideoData={currentVideoData}
+					/>
 				</div>
 				<div className="below-video-content__right">
 					<NextVideos
