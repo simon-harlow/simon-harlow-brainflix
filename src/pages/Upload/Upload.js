@@ -1,14 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./Upload.scss";
 import VideoThumbnail from "../../assets/images/Upload-video-preview.jpg";
 import Publish from "../../assets/images/publish.svg";
 
 export default function Upload() {
+
+	const navigate = useNavigate();
+
 	function handleSubmit(event) {
 		event.preventDefault();
 		alert("Video upload successful!");
-		window.location.href = "/";
+		navigate("/");
 	}
 
 	return (
