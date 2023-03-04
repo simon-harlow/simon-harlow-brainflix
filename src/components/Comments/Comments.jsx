@@ -8,7 +8,6 @@ export default function Comments( {currentVideoData, commentsData, addComment} )
 
     const numberOfComments = commentsData.length;
     const sortedComments = commentsData.sort((a, b) => b.timestamp - a.timestamp);
-    console.log(commentsData);
 
 	return (
         <section className="comments">

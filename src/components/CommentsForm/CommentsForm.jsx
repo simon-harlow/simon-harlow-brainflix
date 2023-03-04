@@ -20,59 +20,52 @@ export default function CommentsForm({ currentVideoData, addComment }) {
 		setComment(event.target.value);
 	};
 
-	// const checkInputs = () => {
-	// 	if (name.trim() === "") {
-	// 		return { alert: "Please add your name", inputName: "name" };
-	// 	} else if (comment.trim() === "") {
-	// 		return { error: "Please add a comment", inputName: "comment" };
-	// 	} else {
-	// 		return { error: "", inputName: "" };
-	// 	}
-	// };
+	const checkInputs = () => {
+		if (name === "") {
+			alert('Please add your name')
+            return false;
+		} else if (comment === "") {
+			alert('Please add a comment');
+            return false;
+		} else {
+			return true
+		}
+	};
 
-    // const isFormValid = () => {
-    //     if (!name || !comment) {
-    //         return false;
-    //     }
+    const isFormValid = () => {
+        if (!checkInputs()) {
+            return false;
+        }
 
-    //     return true;
-    // }
+        return true;
+    }
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		// const { error, inputName } = checkInputs();
 
-		// if (error) {
-		// 	setFormError(error);
-		// 	document.getElementById(inputName).classList.add("form__error");
-		// 	return;
-		// } else {
-		// 	setFormError("");
-		// 	document.getElementById("name").classList.remove("form__error");
-		// 	document.getElementById("comment").classList.remove("form__error");
-		// }
+        if (isFormValid()) {
 
-		API_KEY.then((apiKey) => {
-			axios
-				.post(
-					`${API_URL}/videos/${videoId}/comments?api_key=${apiKey}`,
-					{
-						name,
-						comment,
-					}
-				)
-				.then((result) => {
-                    console.log(result);
-                    addComment(result.data);
-                    setName("");
-                    setComment("");
-                })
-				.catch((error) => {
-					console.error(error);
-				});
-		}).catch((error) => {
-			console.error(error);
-		});
+            API_KEY.then((apiKey) => {
+                axios
+                    .post(
+                        `${API_URL}/videos/${videoId}/comments?api_key=${apiKey}`,
+                        {
+                            name,
+                            comment,
+                        }
+                    )
+                    .then((result) => {
+                        addComment(result.data);
+                        setName("");
+                        setComment("");
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            }).catch((error) => {
+                console.error(error);
+            });
+        }
 	};
 
 	return (
@@ -92,11 +85,7 @@ export default function CommentsForm({ currentVideoData, addComment }) {
 					NAME
 				</label>
 				<input
-					className={`comments__form-input comments__form-input--name ${
-						formError && formError.inputName === "name"
-							? "form__error"
-							: ""
-					}`}
+					className={`comments__form-input comments__form-input--name ${formError && formError.inputName === "name"? "form__error": ""}`}
 					type="text"
 					name="name"
 					id="name"
@@ -109,11 +98,7 @@ export default function CommentsForm({ currentVideoData, addComment }) {
 					JOIN THE CONVERSATION
 				</label>
 				<textarea
-					className={`comments__form-input ${
-						formError && formError.inputName === "comment"
-							? "form__error"
-							: ""
-					}`}
+					className={`comments__form-input ${formError && formError.inputName === "comment"? "form__error": ""}`}
 					name="comment"
 					id="comment"
 					maxLength="200"
@@ -125,7 +110,6 @@ export default function CommentsForm({ currentVideoData, addComment }) {
 					className="comments__form-button"
 					type="submit"
 					id="submit"
-                    disabled={formError}
 				>
 					<img
 						className="comments__form-button-img"

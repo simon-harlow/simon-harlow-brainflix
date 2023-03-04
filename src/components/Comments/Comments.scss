@@ -6,6 +6,9 @@
 .comments {
     background-color: $white;
     padding: 1.5rem 1rem 1.5rem 1rem; 
+    overflow: auto;
+    height: 650px;
+    // comments section will add vertical scroll if => 600px in height
 
     @include tablet {
         padding: 1rem 2.25rem 1.5rem 2.25rem;
