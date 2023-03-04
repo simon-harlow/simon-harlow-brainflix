@@ -28,7 +28,7 @@ export default function Upload() {
                         <label className="upload-form__label" htmlFor="title">TITLE YOUR VIDEO</label>
                         <input className="upload-form__input" type="text" name="title" id="title" maxlength="40" placeholder="Add a title to your video" />
                         <label className="upload-form__label" htmlFor="description">ADD A VIDEO DESCRIPTION</label>
-                        <textarea className="upload-form__input upload-form__input--textarea" name="description" id="description" maxlength="200" placeholder="Add a description to your video" />
+                        <textarea className="upload-form__input upload-form__input--textarea" name="description" id="description" maxLength="400" placeholder="Add a description to your video" />
                     </div>
                     <div className="upload-form__button-container">
                         <button className="upload-form__publish-button" type="submit" id="submit">

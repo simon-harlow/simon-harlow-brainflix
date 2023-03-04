@@ -10,7 +10,7 @@ export default function Main() {
 	const [videoData, setVideoData] = useState([]);
 	const [currentVideo, setCurrentVideo] = useState(null);
 
-	const { videoId } = useParams(); //used get video ID and watch for change of state if using in URL
+	const { videoId } = useParams(); //used get video ID and watch for change of state in useEffect - needed to refresh page to current ID
 
 	useEffect(() => {
 		axios
@@ -18,10 +18,10 @@ export default function Main() {
 			.then((response) => {
 				setVideoData(response.data);
 				if (videoId) {
-					const selectedVideo = response.data.find((video) => {
+					const loadedVideo = response.data.find((video) => {
 						return video.id === videoId;
 					});
-					setCurrentVideo(selectedVideo);
+					setCurrentVideo(loadedVideo);
 				} else {
 					setCurrentVideo(response.data[0]);
 				}

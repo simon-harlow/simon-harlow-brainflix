@@ -4,17 +4,20 @@ import "./Comments.scss";
 import CommentsForm from "../CommentsForm/CommentsForm";
 import timeAgoDate from "../Utils/timeAgoDate";
 
-export default function Comments( {currentVideoData} ) {
+export default function Comments( {currentVideoData, commentsData, addComment} ) {
 
-    const numberOfComments = currentVideoData.comments.length;
+    const numberOfComments = commentsData.length;
+    const sortedComments = commentsData.sort((a, b) => b.timestamp - a.timestamp);
+    console.log(commentsData);
 
 	return (
         <section className="comments">
             <h2 className="comments__count">{numberOfComments} Comments</h2>
             <CommentsForm
             currentVideoData={currentVideoData}
+            addComment={addComment}
             />
-            {currentVideoData.comments.map((video) => (
+            {sortedComments.map((video) => (
             <div className="old-comments" id={video.id} key={video.id}>
                 <div className="old-comments__left-container">
                     <img className="old-comments__profile-pic" alt="" />

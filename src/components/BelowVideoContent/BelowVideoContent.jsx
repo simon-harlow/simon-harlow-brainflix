@@ -11,13 +11,20 @@ import MainVideoDetails from "../MainVideoDetails/MainVideoDetails";
 
 export default function BelowVideoContent({ currentVideoId, changeMainVideo, videoData }) {
 	const [currentVideoData, setCurrentVideoData] = useState(null);
+	const [commentsData, setCommentsData] = useState(null);
 	const { videoId } = useParams();
+
+	// handles when a comment is added from CommentsForm
+	const addComment = (comment) => {
+		setCommentsData([...commentsData, comment]);
+	};
 
 	useEffect(() => {
 		const id = videoId || currentVideoId;
 		getVideoData(API_URL, API_KEY, id)
 			.then((data) => {
 				setCurrentVideoData(data);
+				setCommentsData(data.comments)
 			})
 			.catch((error) => console.log(error));
 	}, [currentVideoId, videoId]);
@@ -35,6 +42,8 @@ export default function BelowVideoContent({ currentVideoId, changeMainVideo, vid
 					/>
 					<Comments
 					currentVideoData={currentVideoData}
+					commentsData={commentsData}
+					addComment={addComment}
 					/>
 				</div>
 				<div className="below-video-content__right">
