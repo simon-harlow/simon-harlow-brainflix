@@ -32,6 +32,7 @@
         }
     }
 
+    // style for comments placeholder text when no comments returned from array
     &__empty {
         padding-top: 2rem;
         @include font-subheader;

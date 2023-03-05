@@ -31,7 +31,6 @@ export default function Comments( {currentVideoData, commentsData, addComment, d
     }
 
     // previously had "comments" hard-coded in the h2 but needed to handle 1 comment
-
 	return (
         <section className="comments">
             <h2 className="comments__count">{numberOfComments} {numberOfComments === 1 ? 'Comment' : 'Comments'}</h2>

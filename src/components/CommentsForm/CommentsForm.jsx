@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import axios from "axios";
 
 import { API_URL, API_KEY } from "../Utils/const";
+
 import "./CommentsForm.scss";
 import Avatar from "../../assets/images/Mohan-muruge.jpg";
 import CommentIcon from "../../assets/images/add_comment.svg";

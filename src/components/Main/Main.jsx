@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from 'react'
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-import { API_URL, API_KEY} from "../Utils/const";
+import { API_URL, API_KEY } from "../Utils/const";
+
 import MainVideo from "../MainVideo/MainVideo";
 import BelowVideoContent from "../BelowVideoContent/BelowVideoContent";
 
@@ -12,6 +14,7 @@ export default function Main() {
 
 	const { videoId } = useParams(); //used get video ID and watch for change of state in useEffect - needed to refresh page to current ID
 
+	// calls for video data and watches for changes in video ID
 	useEffect(() => {
 		axios
 			.get(`${API_URL}/videos?api_key=${API_KEY}`)
@@ -29,6 +32,7 @@ export default function Main() {
 			.catch((error) => console.log(error));
 	}, [videoId]);
 
+	// handles when video is clicked in side menu
 	function changeVideo(id) {
 		const selectedVideo = videoData.find((video) => {
 			return video.id === id;

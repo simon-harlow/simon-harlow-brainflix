@@ -1,4 +1,5 @@
 import React from 'react'
+
 import './Video.scss'
 
 export default function Video( {changeMainVideo, id, title, channel, image} ) {

@@ -1,4 +1,5 @@
 import React from 'react'
+
 import './MainVideoDetails.scss'
 import ViewsIcon from "../../assets/images/views.svg"
 import LikesIcon from "../../assets/images/likes.svg"
