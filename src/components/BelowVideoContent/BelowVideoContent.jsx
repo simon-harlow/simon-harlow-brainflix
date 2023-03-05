@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import { getVideoData } from "../Utils/getVideoData";
+import { deleteVideoData } from "../Utils/deleteVideoData";
 import { API_URL, API_KEY} from "../Utils/const";
 import "./BelowVideoContent.scss";
 import Comments from "../Comments/Comments";
@@ -14,20 +15,37 @@ export default function BelowVideoContent({ currentVideoId, changeMainVideo, vid
 	const [commentsData, setCommentsData] = useState(null);
 	const { videoId } = useParams();
 
-	// handles when a comment is added from CommentsForm
-	const addComment = (comment) => {
-		setCommentsData([...commentsData, comment]);
-	};
-
 	useEffect(() => {
 		const id = videoId || currentVideoId;
 		getVideoData(API_URL, API_KEY, id)
-			.then((data) => {
-				setCurrentVideoData(data);
-				setCommentsData(data.comments)
+			.then((result) => {
+				setCurrentVideoData(result);
+				setCommentsData(result.comments)
 			})
 			.catch((error) => console.log(error));
 	}, [currentVideoId, videoId]);
+
+	// handles when a comment is added from CommentsForm
+	const addComment = (comment) => {
+		const id = videoId || currentVideoId;
+		getVideoData(API_URL, API_KEY, id)
+			.then((result) => {
+				setCommentsData([...commentsData, comment])
+			})
+			.catch((error) => console.log(error));
+	};
+
+	const deleteComment = (commentId) => {
+		const id = videoId || currentVideoId;
+		deleteVideoData(API_URL, API_KEY, id, commentId)
+			.then((result) => {
+				const filteredComments = commentsData.filter((comment) => {
+					return comment.id !== result.id 
+				})
+				setCommentsData([...filteredComments])
+			})
+			.catch((error) => console.log(error));
+	};
 
 	if (!currentVideoData) {
 		return;
@@ -44,6 +62,7 @@ export default function BelowVideoContent({ currentVideoId, changeMainVideo, vid
 					currentVideoData={currentVideoData}
 					commentsData={commentsData}
 					addComment={addComment}
+					deleteComment={deleteComment}
 					/>
 				</div>
 				<div className="below-video-content__right">

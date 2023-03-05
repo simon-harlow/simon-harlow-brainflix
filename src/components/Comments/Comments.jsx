@@ -1,17 +1,40 @@
 import React from "react";
 
 import "./Comments.scss";
+import DeleteIcon from "../../assets/images/delete.svg"
 import CommentsForm from "../CommentsForm/CommentsForm";
 import timeAgoDate from "../Utils/timeAgoDate";
 
-export default function Comments( {currentVideoData, commentsData, addComment} ) {
+export default function Comments( {currentVideoData, commentsData, addComment, deleteComment} ) {
 
     const numberOfComments = commentsData.length;
     const sortedComments = commentsData.sort((a, b) => b.timestamp - a.timestamp);
 
+    const handleDelete = (commentId) => {
+        deleteComment(commentId);
+    }
+
+    // renders if no comments to load from API
+    if (numberOfComments === 0) {
+        return (
+            <section className="comments">
+                <h2 className="comments__count">0 Comments</h2>
+                <CommentsForm
+                    currentVideoData={currentVideoData}
+                    addComment={addComment}
+                />
+                <div className="comments__empty">
+                    Be the first to comment on this video!
+                </div>
+            </section>
+        );
+    }
+
+    // previously had "comments" hard-coded in the h2 but needed to handle 1 comment
+
 	return (
         <section className="comments">
-            <h2 className="comments__count">{numberOfComments} Comments</h2>
+            <h2 className="comments__count">{numberOfComments} {numberOfComments === 1 ? 'Comment' : 'Comments'}</h2>
             <CommentsForm
             currentVideoData={currentVideoData}
             addComment={addComment}
@@ -28,6 +51,11 @@ export default function Comments( {currentVideoData, commentsData, addComment} )
                     </div>
                     <div className="old-comments__text-container">
                         <p className="old-comments__text">{video.comment}</p>
+                    </div>
+                    <div className="old-comments__button-container">
+                        <button className="old-comments__button" onClick={() => handleDelete(video.id)}>
+                            <img src={DeleteIcon} alt="delete icon"/>
+                        </button>
                     </div>
                 </div>
             </div>

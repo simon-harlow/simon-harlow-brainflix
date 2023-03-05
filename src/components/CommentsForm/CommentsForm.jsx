@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+
 import { API_URL, API_KEY } from "../Utils/const";
 import "./CommentsForm.scss";
 import Avatar from "../../assets/images/Mohan-muruge.jpg";
@@ -23,11 +24,14 @@ export default function CommentsForm({ currentVideoData, addComment }) {
 	const checkInputs = () => {
 		if (name === "") {
 			alert('Please add your name')
+			setFormError({ inputName: "name", message: "Please add your name" });
             return false;
 		} else if (comment === "") {
 			alert('Please add a comment');
+			setFormError({ inputName: "comment", message: "Please add a comment" });
             return false;
 		} else {
+			setFormError({ inputName: "" });
 			return true
 		}
 	};
@@ -44,11 +48,8 @@ export default function CommentsForm({ currentVideoData, addComment }) {
 		event.preventDefault();
 
         if (isFormValid()) {
-
-            API_KEY.then((apiKey) => {
-                axios
-                    .post(
-                        `${API_URL}/videos/${videoId}/comments?api_key=${apiKey}`,
+                    axios.post(
+                        `${API_URL}/videos/${videoId}/comments?api_key=${API_KEY}`,
                         {
                             name,
                             comment,
@@ -62,11 +63,8 @@ export default function CommentsForm({ currentVideoData, addComment }) {
                     .catch((error) => {
                         console.error(error);
                     });
-            }).catch((error) => {
-                console.error(error);
-            });
-        }
-	};
+            }
+		}
 
 	return (
 		<div className="comments__form-container">
@@ -85,7 +83,7 @@ export default function CommentsForm({ currentVideoData, addComment }) {
 					NAME
 				</label>
 				<input
-					className={`comments__form-input comments__form-input--name ${formError && formError.inputName === "name"? "form__error": ""}`}
+					className={`comments__form-input comments__form-input--name ${formError && formError.inputName === "name" ? "form__error" : ""}`}
 					type="text"
 					name="name"
 					id="name"
@@ -95,10 +93,10 @@ export default function CommentsForm({ currentVideoData, addComment }) {
 					value={name}
 				/>
 				<label className="comments__form-subhead" htmlFor="comment">
-					JOIN THE CONVERSATION
+					COMMENT
 				</label>
 				<textarea
-					className={`comments__form-input ${formError && formError.inputName === "comment"? "form__error": ""}`}
+					className={`comments__form-input ${formError && formError.inputName === "comment" ? "form__error" : ""}`}
 					name="comment"
 					id="comment"
 					maxLength="200"
