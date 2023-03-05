@@ -8,6 +8,10 @@ This was the first project using `React.js`
 
 Build a responsive youtube like website and use React props and state to render data
 
+## Sprint 2 
+
+Replace hard-coded data with API requests and utilise UseEffect and UseParams hooks
+
 ## Authors
 * [Adam](https://github.com/GInTher)
 * [Paolo](https://github.com/PCRib)
