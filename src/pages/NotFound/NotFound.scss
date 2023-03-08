@@ -1,0 +1,52 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../App.scss" as *;
+
+.not-found {
+
+    height: 100vh;
+    vertical-align: middle;
+    text-align: center;
+    padding: 1rem 1rem 1rem 1rem;
+
+    @include tablet {
+        padding: 1rem 2.25rem 1rem 2.25rem;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 5rem;
+
+        @include desktop {
+            width: 80rem;
+            margin: 0 auto 0 auto;
+        }
+    }
+
+    &__img {
+        background-color: $mercury;
+    }
+
+    &__text {
+        @include font-body;
+        padding: 2rem 0 1rem 0;
+    }
+
+    &__button {
+        @include font-label;
+        color: $white;
+        background-color: $brainflix-blue;
+        height: 2rem;
+        width: 4rem;
+        border: none;
+        border-radius: .25rem;
+
+        &:hover {
+            background-color: $brainflix-darkblue;
+        }
+    }
+}
