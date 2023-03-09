@@ -10,6 +10,31 @@
         background-color: inherit;
         position: relative;
 
+        &.paused .pause-icon {
+            display: none;
+        }
+
+        &:not(.paused) .play-icon {
+            display: none;
+        }
+
+        &.fullscreen .fullscreen-icon {
+            display: none;
+        }
+
+        &:not(.fullscreen) .close-fullscreen-icon {
+            display: none;
+        }
+
+        &.mute .mute-icon {
+            display: none;
+        }
+
+        &:not(.mute) .volume-icon {
+            display: none;
+        }
+
+
         @include tablet {
             padding: 0rem 2.25rem 0rem 2.25rem;
         }
@@ -29,20 +54,91 @@
         aspect-ratio: 16 / 9;
     }
 
-    &__video-controls {
+    &__video-controls-container {
         position: absolute;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         bottom: 0;
         left: 0;
         right: 0;
+        z-index: 100;
         padding-bottom: 0.5rem;
+        color: $white;
+        padding: 0 0.5rem 0 0.5rem;
+        
+        @include tablet {
+            padding: 0rem 2.25rem 0rem 2.25rem;
+        }
+    }
+
+    &__video-controls {
+        display: flex;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        align-items: center; 
+    }
+
+    &__video-duration-container {
+        background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+        display: flex;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        height: 2rem;
+        align-items: center; 
+        flex-grow: 1;
+        border-radius: .25rem;
+        border: none;
+    }
+
+    &__scrub {
+        background-color: $brainflix-darkblack;
+        height: 3px;
+        width: 100%;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: calc(100% - var(--preview-position) * 100%);
+            background-color: $silver;
+            display: none;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: calc(100% - var(--progress-position) * 100%);
+            background-color: $brainflix-blue;
+        }
+    }
+
+    &__time {
+        @include font-body;
+        color: inherit;
+    }
+
+    &__thumb {
+        position: absolute;
+        height: 200%;
+        top: -50%;
+        left: calc(var(--progress-position) * 100%);
+        background-color: $white;
+        border-radius: 50%;
     }
 
     &__video-controls-button {
         background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+        color: inherit;
         border-radius: .25rem;
+        border: none;
+        height: 2rem;
+        width: 2rem;
+        align-items: center;
+        cursor: pointer;
     }
 }
 
