@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 import { getVideoData } from "../Utils/getVideoData";
 import { deleteVideoData } from "../Utils/deleteVideoData";
-import { API_URL, API_KEY} from "../Utils/const";
+import { API_URL} from "../Utils/const";
 
 import "./BelowVideoContent.scss";
 import Comments from "../Comments/Comments";
@@ -18,7 +18,7 @@ export default function BelowVideoContent({ currentVideoId, changeMainVideo, vid
 
 	useEffect(() => {
 		const id = videoId || currentVideoId;
-		getVideoData(API_URL, API_KEY, id)
+		getVideoData(API_URL, id)
 			.then((result) => {
 				setCurrentVideoData(result);
 				setCommentsData(result.comments)
@@ -29,7 +29,7 @@ export default function BelowVideoContent({ currentVideoId, changeMainVideo, vid
 	// handles when a comment is added from CommentsForm
 	const addComment = (comment) => {
 		const id = videoId || currentVideoId;
-		getVideoData(API_URL, API_KEY, id)
+		getVideoData(API_URL, id)
 			.then((result) => {
 				setCommentsData([...commentsData, comment])
 			})
@@ -38,7 +38,7 @@ export default function BelowVideoContent({ currentVideoId, changeMainVideo, vid
 
 	const deleteComment = (commentId) => {
 		const id = videoId || currentVideoId;
-		deleteVideoData(API_URL, API_KEY, id, commentId)
+		deleteVideoData(API_URL, id, commentId)
 			.then((result) => {
 				const filteredComments = commentsData.filter((comment) => {
 					return comment.id !== result.id 

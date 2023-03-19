@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 
-import { API_URL, API_KEY } from "../Utils/const";
+import { API_URL } from "../Utils/const";
 
 import "./CommentsForm.scss";
 import Avatar from "../../assets/images/Mohan-muruge.jpg";
@@ -51,7 +51,7 @@ export default function CommentsForm({ currentVideoData, addComment }) {
 
         if (isFormValid()) {
                     axios.post(
-                        `${API_URL}/videos/${videoId}/comments?api_key=${API_KEY}`,
+                        `${API_URL}/video/${videoId}/comments`,
                         {
                             name,
                             comment,

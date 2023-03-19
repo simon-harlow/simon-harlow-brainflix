@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-import { API_URL, API_KEY } from "../Utils/const";
+import { API_URL } from "../Utils/const";
 
 import MainVideo from "../MainVideo/MainVideo";
 import BelowVideoContent from "../BelowVideoContent/BelowVideoContent";
@@ -17,7 +17,7 @@ export default function Main() {
 	// calls for video data and watches for changes in video ID
 	useEffect(() => {
 		axios
-			.get(`${API_URL}/videos?api_key=${API_KEY}`)
+			.get(`${API_URL}/video`)
 			.then((response) => {
 				setVideoData(response.data);
 				if (videoId) {
