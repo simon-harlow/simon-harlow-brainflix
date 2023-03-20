@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 import { getVideoData } from "../Utils/getVideoData";
 import { deleteVideoData } from "../Utils/deleteVideoData";
+import { likeVideoComment } from "../Utils/likeVideoComment";
 import { API_URL} from "../Utils/const";
 
 import "./BelowVideoContent.scss";
@@ -48,6 +49,22 @@ export default function BelowVideoContent({ currentVideoId, changeMainVideo, vid
 			.catch((error) => console.log(error));
 	};
 
+	const likeComment = (commentId) => {
+		const id = videoId || currentVideoId;
+		likeVideoComment(API_URL, id, commentId)
+			.then((result) => {
+				const updatedCommentsData = commentsData.map((comment) => {
+					if (comment.id === result.id) {
+						return result;
+					} else {
+						return comment;
+					}
+				});
+				setCommentsData(updatedCommentsData);
+			})
+			.catch((error) => console.log(error));
+	};
+
 	if (!currentVideoData) {
 		return;
 	}
@@ -64,6 +81,7 @@ export default function BelowVideoContent({ currentVideoId, changeMainVideo, vid
 					commentsData={commentsData}
 					addComment={addComment}
 					deleteComment={deleteComment}
+					likeComment={likeComment}
 					/>
 				</div>
 				<div className="below-video-content__right">

@@ -2,16 +2,23 @@ import React from "react";
 
 import "./Comments.scss";
 import DeleteIcon from "../../assets/images/delete.svg"
+import CommentLike from "../../assets/images/comment-like.svg"
 import CommentsForm from "../CommentsForm/CommentsForm";
 import timeAgoDate from "../Utils/timeAgoDate";
 
-export default function Comments( {currentVideoData, commentsData, addComment, deleteComment} ) {
+export default function Comments( {currentVideoData, commentsData, addComment, deleteComment, likeComment} ) {
 
     const numberOfComments = commentsData.length;
     const sortedComments = commentsData.sort((a, b) => b.timestamp - a.timestamp);
 
+    console.log(sortedComments);
+
     const handleDelete = (commentId) => {
         deleteComment(commentId);
+    }
+
+    const handleLike = (commentId) => {
+        likeComment(commentId);
     }
 
     // renders if no comments to load from API
@@ -52,6 +59,10 @@ export default function Comments( {currentVideoData, commentsData, addComment, d
                         <p className="old-comments__text">{video.comment}</p>
                     </div>
                     <div className="old-comments__button-container">
+                        <button className="old-comments__button" onClick={() => handleLike(video.id)}>
+                            <img src={CommentLike} alt="like icon"/>
+                        </button>
+                        <span className="old-comments__button-count">{video.likes}</span>
                         <button className="old-comments__button" onClick={() => handleDelete(video.id)}>
                             <img src={DeleteIcon} alt="delete icon"/>
                         </button>
