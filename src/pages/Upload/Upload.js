@@ -52,7 +52,7 @@ export default function Upload() {
 		
 		if (isFormValid()) {
 				axios.post(
-					`${API_URL}/upload`,
+					`${API_URL}/videos`,
 					{
 						title,
 						description,
@@ -62,7 +62,7 @@ export default function Upload() {
 					setTitle("");
 					setDescription("");
 					const newVideoId = result.data.id;
-					navigate(`/video/${newVideoId}`);
+					navigate(`/videos/${newVideoId}`);
 				})
 				.catch((error) => {
 					console.error(error);

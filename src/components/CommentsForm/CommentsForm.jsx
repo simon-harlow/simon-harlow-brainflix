@@ -51,7 +51,7 @@ export default function CommentsForm({ currentVideoData, addComment }) {
 
         if (isFormValid()) {
                     axios.post(
-                        `${API_URL}/video/${videoId}/comments`,
+                        `${API_URL}/videos/${videoId}/comments`,
                         {
                             name,
                             comment,

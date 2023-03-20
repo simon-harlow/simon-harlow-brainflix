@@ -17,7 +17,7 @@ export default function Main() {
 	// calls for video data and watches for changes in video ID
 	useEffect(() => {
 		axios
-			.get(`${API_URL}/video`)
+			.get(`${API_URL}/videos`)
 			.then((response) => {
 				setVideoData(response.data);
 				if (videoId) {
