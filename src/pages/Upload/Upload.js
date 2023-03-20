@@ -1,5 +1,9 @@
 import React from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+import { API_URL } from "../../components/Utils/const";
 
 import "./Upload.scss";
 import VideoThumbnail from "../../assets/images/Upload-video-preview.jpg";
@@ -9,10 +13,61 @@ export default function Upload() {
 
 	const navigate = useNavigate();
 
+	const [title, setTitle] = useState("");
+	const [description, setDescription] = useState("");
+	const [formError, setFormError] = useState("");
+
+		const handleChangeTitle = (event) => {
+		setTitle(event.target.value);
+	};
+
+	const handleChangeDescription = (event) => {
+		setDescription(event.target.value);
+	};
+
+	const checkInputs = () => {
+		if (title === "") {
+			alert('Please add a title for your video')
+			setFormError({ inputName: "title", message: "Please add a title for your video" });
+            return false;
+		} else if (description === "") {
+			alert('Please add a description for your video');
+			setFormError({ inputName: "description", message: "Please add a description for your video" });
+            return false;
+		} else {
+			setFormError({ inputName: "" });
+			return true
+		}
+	};
+
+	const isFormValid = () => {
+        if (!checkInputs()) {
+            return false;
+        }
+        return true;
+    }
+
 	function handleSubmit(event) {
 		event.preventDefault();
-		alert("Video upload successful!");
-		navigate("/");
+		
+		if (isFormValid()) {
+				axios.post(
+					`${API_URL}/upload`,
+					{
+						title,
+						description,
+					}
+				)
+				.then((result) => {
+					setTitle("");
+					setDescription("");
+					const newVideoId = result.data.id;
+					navigate(`/video/${newVideoId}`);
+				})
+				.catch((error) => {
+					console.error(error);
+				});
+        }
 	}
 
 	return (
@@ -43,21 +98,25 @@ export default function Upload() {
 							TITLE YOUR VIDEO
 						</label>
 						<input
-							className="upload-form__input"
+							className={`upload-form__input ${formError && formError.inputName === "title" ? "form__error" : ""}`}
 							type="text"
 							name="title"
 							id="title"
-							maxlength="40"
+							maxLength="40"
 							placeholder="Add a title to your video"
+							onChange={handleChangeTitle}
+							value={title}
 						/>
 						<label className="upload-form__label" htmlFor="description">ADD A VIDEO DESCRIPTION
 						</label>
 						<textarea
-							className="upload-form__input upload-form__input--textarea"
+							className={`upload-form__input upload-form__input--textarea ${formError && formError.inputName === "description" ? "form__error" : ""}`}
 							name="description"
 							id="description"
 							maxLength="400"
 							placeholder="Add a description to your video"
+							onChange={handleChangeDescription}
+							value={description}
 						/>
 					</div>
 					<div className="upload-form__button-container">
