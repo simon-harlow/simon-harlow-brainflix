@@ -11,8 +11,6 @@ export default function Comments( {currentVideoData, commentsData, addComment, d
     const numberOfComments = commentsData.length;
     const sortedComments = commentsData.sort((a, b) => b.timestamp - a.timestamp);
 
-    console.log(sortedComments);
-
     const handleDelete = (commentId) => {
         deleteComment(commentId);
     }

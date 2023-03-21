@@ -5,7 +5,8 @@ import { useParams } from "react-router-dom";
 import { getVideoData } from "../Utils/getVideoData";
 import { deleteVideoData } from "../Utils/deleteVideoData";
 import { likeVideoComment } from "../Utils/likeVideoComment";
-import { API_URL} from "../Utils/const";
+import { likeVideoData } from "../Utils/likeVideoData";
+import { API_URL } from "../Utils/const";
 
 import "./BelowVideoContent.scss";
 import Comments from "../Comments/Comments";
@@ -42,7 +43,7 @@ export default function BelowVideoContent({ currentVideoId, changeMainVideo, vid
 		deleteVideoData(API_URL, id, commentId)
 			.then((result) => {
 				const filteredComments = commentsData.filter((comment) => {
-					return comment.id !== result.id 
+					return comment.id !== result.id
 				})
 				setCommentsData([...filteredComments])
 			})
@@ -65,6 +66,16 @@ export default function BelowVideoContent({ currentVideoId, changeMainVideo, vid
 			.catch((error) => console.log(error));
 	};
 
+	const likeVideo = () => {
+		const id = videoId || currentVideoId;
+		likeVideoData(API_URL, id)
+			.then((result) => {
+				setCurrentVideoData(result);
+				setCommentsData(result.comments);
+			})
+			.catch((error) => console.log(error));
+	};
+
 	if (!currentVideoData) {
 		return;
 	}
@@ -75,18 +86,19 @@ export default function BelowVideoContent({ currentVideoId, changeMainVideo, vid
 				<div className="below-video-content__left">
 					<MainVideoDetails
 						currentVideoData={currentVideoData}
+						likeVideo={likeVideo}
 					/>
 					<Comments
-					currentVideoData={currentVideoData}
-					commentsData={commentsData}
-					addComment={addComment}
-					deleteComment={deleteComment}
-					likeComment={likeComment}
+						currentVideoData={currentVideoData}
+						commentsData={commentsData}
+						addComment={addComment}
+						deleteComment={deleteComment}
+						likeComment={likeComment}
 					/>
 				</div>
 				<div className="below-video-content__right">
 					<NextVideos
-                        videoData={videoData}
+						videoData={videoData}
 						changeMainVideo={changeMainVideo}
 						currentVideoId={currentVideoId}
 					/>

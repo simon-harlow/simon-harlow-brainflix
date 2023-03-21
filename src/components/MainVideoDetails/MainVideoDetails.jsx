@@ -1,12 +1,20 @@
 import React from 'react'
 
+
 import './MainVideoDetails.scss'
 import ViewsIcon from "../../assets/images/views.svg"
 import LikesIcon from "../../assets/images/likes.svg"
 import timeAgoDate from '../Utils/timeAgoDate'
+import formatNumber from "../Utils/formatNumber"
 
 
-export default function MainVideoDetails( {currentVideoData} ) {
+
+export default function MainVideoDetails( {currentVideoData, likeVideo} ) {
+
+    const handleVideoLike = () => {
+        likeVideo()
+    }
+
     return (
         <section className="video-details">
             <div className="video-details__title-container">
@@ -20,11 +28,13 @@ export default function MainVideoDetails( {currentVideoData} ) {
                 <div className="video-details__info-right">
                     <div className="video-details__info-views">
                         <img className="video-details__info-icon--views" src={ViewsIcon} alt="views icon" />
-                        <p className="video-details__info-count--views">{currentVideoData.views}</p>
+                        <p className="video-details__info-count--views">{formatNumber(currentVideoData.views)}</p>
                     </div>
                     <div className="video-details__info-likes">
-                    <img className="video-details__info-icon" src={LikesIcon} alt="likes icon" />
-                        <p className="video-details__info-count">{currentVideoData.likes}</p>
+                        <button className="video-details__info-icon video-details__info-icon--likes" onClick={handleVideoLike}>
+                            <img className="hover-color" src={LikesIcon} alt="likes icon" />
+                        </button>
+                        <p className="video-details__info-count">{formatNumber(currentVideoData.likes)}</p>
                     </div>
                 </div>
             </div>
