@@ -6,9 +6,6 @@
 .comments {
     background-color: $white;
     padding: 1.5rem 1rem 1.5rem 1rem; 
-    overflow: auto;
-    height: 650px;
-    // comments section will add vertical scroll if => 600px in height
 
     @include tablet {
         padding: 1rem 2.25rem 1.5rem 2.25rem;
@@ -37,6 +34,14 @@
         padding-top: 2rem;
         @include font-subheader;
     }
+}
+
+.old-comments-container{
+
+    // comments section will add vertical scroll if => 600px in height
+    height: 600px;
+    overflow: auto;
+
 }
 
 .old-comments {

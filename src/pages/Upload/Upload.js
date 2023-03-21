@@ -8,6 +8,7 @@ import { API_URL } from "../../components/Utils/const";
 import "./Upload.scss";
 import VideoThumbnail from "../../assets/images/Upload-video-preview.jpg";
 import Publish from "../../assets/images/publish.svg";
+import Cancel from "../../assets/images/cancel.svg";
 
 export default function Upload() {
 
@@ -46,6 +47,13 @@ export default function Upload() {
         }
         return true;
     }
+
+	const handleCancel = () => {
+		const confirm = window.confirm("Cancel and return to the homepage?");
+        if (confirm) {
+            navigate('/');;
+        }
+	}
 
 	function handleSubmit(event) {
 		event.preventDefault();
@@ -138,11 +146,12 @@ export default function Upload() {
 							className="upload-form__cancel-button"
 							type="button"
 							id="cancel"
+							onClick={handleCancel}
 						>
 							<img
 								className="upload-form__cancel-button-img"
-								src={Publish}
-								alt="publish icon"
+								src={Cancel}
+								alt="cancel icon"
 							/>
 							<span className="upload-form__cancel-button-text">
 								CANCEL

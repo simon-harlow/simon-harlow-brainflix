@@ -157,6 +157,7 @@
 
 		&:hover {
 			background-color: $brainflix-darkblue;
+			box-shadow: 5px 5px 5px $mercury;
 		}
 
 		&-img {
@@ -187,6 +188,10 @@
 			max-width: 10rem;
 			padding: 0.75rem 0.75rem 0.75rem 0.75rem;
 			margin: 0 0 0 1rem;
+		}
+
+		&:hover {
+			box-shadow: 5px 5px 5px $mercury;
 		}
 
 		&-img {
