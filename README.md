@@ -12,6 +12,12 @@ Build a responsive youtube like website and use React props and state to render 
 
 Replace hard-coded data with API requests and utilise UseEffect and UseParams hooks
 
+## Sprint 3 
+
+Edit existing code to point to newly created `node / express` back-end server.
+
+Make final app presentable to 'the client' and fully test.
+
 ## Authors
 * [Adam](https://github.com/GInTher)
 * [Paolo](https://github.com/PCRib)

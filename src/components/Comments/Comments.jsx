@@ -12,7 +12,10 @@ export default function Comments( {currentVideoData, commentsData, addComment, d
     const sortedComments = commentsData.sort((a, b) => b.timestamp - a.timestamp);
 
     const handleDelete = (commentId) => {
-        deleteComment(commentId);
+        const confirm = window.confirm("Are you sure you want to delete this comment?");
+        if (confirm) {
+            deleteComment(commentId);
+        }
     }
 
     const handleLike = (commentId) => {
