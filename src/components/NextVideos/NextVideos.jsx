@@ -16,19 +16,21 @@ export default function NextVideos( {videoData, currentVideoId, changeMainVideo}
             <div className="next-videos__title">
                 <h4 className="next-videos__title-text">NEXT VIDEOS</h4>
             </div>
-            <div>
-            {filteredVideoList.map((video) => (
-                <NavLink to={`/videos/${video.id}`} key={video.id}>
-                    <Video
-                        changeMainVideo={changeMainVideo}
-                        key={video.id}
-                        id={video.id}
-                        image={video.image}
-                        title={video.title}
-                        channel={video.channel}
-                    />
-                </NavLink>
-                ))}
+            <div className="next-videos__container">
+                <div>
+                {filteredVideoList.map((video) => (
+                    <NavLink to={`/videos/${video.id}`} key={video.id}>
+                        <Video
+                            changeMainVideo={changeMainVideo}
+                            key={video.id}
+                            id={video.id}
+                            image={video.image}
+                            title={video.title}
+                            channel={video.channel}
+                        />
+                    </NavLink>
+                    ))}
+                </div>
             </div>
         </section>
 	);
