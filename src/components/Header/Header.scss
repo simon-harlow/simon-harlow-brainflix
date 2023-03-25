@@ -136,6 +136,7 @@
         align-items: center;
         padding: .75rem .75rem .75rem .75rem;
         text-decoration: none;
+        cursor: pointer;
 
         @include tablet {
             @include font-body;

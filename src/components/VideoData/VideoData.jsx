@@ -8,12 +8,12 @@ import { likeVideoComment } from "../Utils/likeVideoComment";
 import { likeVideoData } from "../Utils/likeVideoData";
 import { API_URL } from "../Utils/const";
 
-import "./BelowVideoContent.scss";
+import "./VideoData.scss";
 import Comments from "../Comments/Comments";
 import NextVideos from "../NextVideos/NextVideos";
 import MainVideoDetails from "../MainVideoDetails/MainVideoDetails";
 
-export default function BelowVideoContent({ currentVideoId, changeMainVideo, videoData }) {
+export default function VideoData({ currentVideoId, changeMainVideo, videoData }) {
 	const [currentVideoData, setCurrentVideoData] = useState(null);
 	const [commentsData, setCommentsData] = useState(null);
 	const { videoId } = useParams();

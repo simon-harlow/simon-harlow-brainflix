@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import './Header.scss'
 import Logo from '../../assets/images/BrainFlix-logo.svg'
@@ -14,9 +14,9 @@ export default function Header() {
             <header className="header-container">
                 <div className="header">
                     <div className="header__logo">
-                        <Link to="/">
+                        <NavLink to="/">
                         <img className="header__logo-img" src={Logo} alt="brainflix logo"/>
-                        </Link>
+                        </NavLink>
                     </div>
                     <form className="header__search-container">
                         <div className="header__search">
@@ -28,12 +28,12 @@ export default function Header() {
                         <img className="header__avatar-img"src={Avatar} alt="user avatar"/>
                     </div>
                     <div className="header__button-container">
-                        <Link to="upload">
+                        <NavLink to="upload">
                         <button className="header__button">
                             <img className="header__button-img" src={UploadIcon} alt="upload icon" />
                             <span className="header__button-text">UPLOAD</span>
                         </button>
-                        </Link>
+                        </NavLink>
                     </div>
                 </div>
             </header>

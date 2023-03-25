@@ -6,7 +6,7 @@ import axios from "axios";
 import { API_URL } from "../Utils/const";
 
 import MainVideo from "../MainVideo/MainVideo";
-import BelowVideoContent from "../BelowVideoContent/BelowVideoContent";
+import VideoData from "../VideoData/VideoData";
 
 export default function Main() {
 	const [videoData, setVideoData] = useState([]);
@@ -46,7 +46,7 @@ export default function Main() {
 			{currentVideo && (
 				<>
 					<MainVideo videoData={videoData} />
-					<BelowVideoContent
+					<VideoData
 						currentVideoId={currentVideo.id}
 						changeMainVideo={changeVideo}
 						videoData={videoData}

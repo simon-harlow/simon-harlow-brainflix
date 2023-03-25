@@ -20,4 +20,22 @@
 
 a {
   text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #E1E1E1;
+  border-radius: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #AFAFAF;
 }/*# sourceMappingURL=App.css.map */
